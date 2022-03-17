@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <title>TP2 JS</title>
-</head>
-<body>
-    <img src="./IMG/1.jpg" onclick="handleImg(this)"/>
-    <script src="./JS/main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <title>TP2 JS</title>
+    </head>
+    <body>
+        <img src="./IMG/1.jpg" onclick="handleImg(this)"/>
+        <script>
+            let rotation = 0;
+            function handleImg(element) {
+                rotation += 90;
+                if (rotation == 360) {
+                    rotation = 0;
+                }
+                element.style.transform = `rotate(${rotation}deg)`;
+            }
+        </script>
+    </body>
 </html>

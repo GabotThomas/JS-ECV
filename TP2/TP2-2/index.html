@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <title>TP2 JS</title>
-</head>
-<body>
-    <ul>
-      <li onclick="handleList(this)">Paris</li>
-      <li onclick="handleList(this)">Lille</li>
-      <li onclick="handleList(this)">Lyon</li>
-      <li onclick="handleList(this)">Marseille</li>
-      <li onclick="handleList(this)">Bordeaux</li>
-    </ul>
-    <script src="./JS/main.js"></script>
-</body>
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <title>TP2 JS</title>
+    </head>
+    <body>
+        <ul>
+            <li onclick="handleList(this)">Paris</li>
+            <li onclick="handleList(this)">Lille</li>
+            <li onclick="handleList(this)">Lyon</li>
+            <li onclick="handleList(this)">Marseille</li>
+            <li onclick="handleList(this)">Bordeaux</li>
+        </ul>
+        <script>
+            const handleList = (element) => {
+                const futureList = Array.from(document.querySelectorAll('li')).slice();
+                const indexElement = futureList.indexOf(element);
+                for (let i = indexElement - 1; i >= 0; i--) {
+                    futureList[i + 1] = futureList[i];
+                }
+                futureList[0] = element;
+                const ul = document.querySelector('ul');
+                futureList.forEach(li => ul.appendChild(li))
+            }
+        </script>
+    </body>
 </html>
