@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <title>TP1 JS</title>
-</head>
-<body>
-    <img src="IMG/1.jpg" />
-    <img src="IMG/2.jpg" />
-    <img src="IMG/3.jpeg" />
-    <script src="./JS/main.js"></script>
-</body>
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+        <title>TP1 JS</title>
+    </head>
+    <body>
+        <img src="IMG/1.jpg" />
+        <img src="IMG/2.jpg" />
+        <img src="IMG/3.jpeg" />
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                var arrayImg = document.querySelectorAll('img');
+                arrayImg[0].src = arrayImg[2].src;
+                arrayImg[1].src = arrayImg[2].src;
+            });
+        </script>
+    </body>
 </html>
