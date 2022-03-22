@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+        <title>TP2 JS</title>
+    </head>
+    <body>
+        <div style="width:50px;height:50px;background-color:pink;position: absolute;top:50%;left:50%;"></div>
+        <script>
+            const cube = document.querySelector('div');
+            
+            //init and center cube
+            let x = -cube.offsetWidth / 2;
+            let y = -cube.offsetHeight / 2;
+            cube.style.transform = `translate(${x}px, ${y}px)`;
+
+            document.addEventListener('keydown', (event) => {
+                switch (event.code) {
+                    case 'ArrowRight':
+                        x += 20;
+                        break;
+                    case 'ArrowLeft':
+                        x -= 20;
+                        break;
+                    case 'ArrowUp':
+                        y -= 20;
+                        break;
+                    case 'ArrowDown':
+                        y += 20;
+                        break;
+                }
+                cube.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        </script>
+    </body>
+</html>
