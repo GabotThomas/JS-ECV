@@ -15,9 +15,9 @@
         </ul>
         <script>
             window.addEventListener("DOMContentLoaded", (event) => {
-                let elemLi = document.createElement('li');
+                const elemLi = document.createElement('li');
                 elemLi.innerText = "Turlututu";
-                let elemUl = document.getElementsByTagName('ul')[0];
+                const elemUl = document.getElementsByTagName('ul')[0];
                 elemUl.replaceChild(elemLi, elemUl.children[1])
             });
         </script>
