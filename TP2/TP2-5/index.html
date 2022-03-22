@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <title>TP2 JS</title>
-  <style>
-    .img-zoom{
-      float: left;
-      position: relative;
-    }
-    .zoom{
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      display: none;
-    }
-  </style>
-</head>
-<body>
-    <div class="img-zoom">
-      <img src="./IMG/1.jpg"/>
-    </div>
-    <div class="img-zoom"><img src="./IMG/2.jpg"/></div>
-    <div class="img-zoom"><img src="./IMG/2.jpg"/></div>
-    <script src="./JS/main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP2 JS</title>
+        <style>
+            img{
+                width: 27%;
+                height: auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./IMG/1.jpg"/>
+        <img src="./IMG/2.jpg"/>
+        <img src="./IMG/2.jpg"/>
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                Array.from(document.getElementsByTagName('img')).forEach(element => {
+                    element.addEventListener("mouseenter",(e)=>{
+                        target = e.target;
+                        target.style.width = `${target.offsetWidth * 3}px`;
+                    })
+                    element.addEventListener("mouseleave",(e)=>{
+                        target = e.target;
+                        target.style.width = `${target.offsetWidth / 3}px`;
+                    })
+                });
+            });
+        </script>
+    </body>
 </html>
