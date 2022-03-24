@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+        <title>TP3 JS</title>
+        <style>
+            div{
+                width: 100%;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                const arrayColor = [];
+                for(let i = 0;i<=getRandomInt(15,5);i++){
+                    const elemDiv = document.createElement('div');
+                    arrayColor.push(getRandomColor());
+                    elemDiv.setAttribute("style",
+                    `background-color:${arrayColor[i]}`
+                    );
+                    document.body.appendChild(elemDiv);
+                    elemDiv.addEventListener('click',(event)=>{
+                        const target = event.target;
+                        target.style.backgroundColor = isRed(target) ? arrayColor[i] :'red';
+                    })
+                }
+                
+                function getRandomInt(max, min) {
+                    return Math.floor(Math.random() * ((max+1) - min) + min);
+                }
+
+                function getRandomColor(){
+                    return `rgb(${getRandomInt(255,0)},${getRandomInt(255,0)},${getRandomInt(255,0)})`
+                }
+                function isRed(target){
+                    return target.style.backgroundColor == "red";
+                }
+            });
+        </script>
+    </body>
+</html>
