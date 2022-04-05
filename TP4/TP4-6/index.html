@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP4 JS</title>
+    </head>
+    <body>
+        <script>
+            const string = "Le chemin le plus cours n'est pas toujours le meilleur";
+
+            function findLongestWord(string){
+                const words = string.split(' ');
+                let longestWord = words[0];
+                for(let i = 1;i<words.length;i++){
+                    if(words[i].length > longestWord.length){
+                        longestWord = words[i];
+                    }
+                }
+                return longestWord;
+            }
+
+            function revert(str){
+                return str.split('').reverse().join('');
+            }
+            
+            document.body.innerHTML += `String: ${string} </br>FindLongestWord: ${findLongestWord(string)}`
+        </script>
+    </body>
+</html>
