@@ -26,19 +26,17 @@
                         const target = event.target;
                         target.style.backgroundColor = isRed(target) ? arrayColor[i] :'red';
                     })
-                }
-                
-                function getRandomInt(max, min) {
-                    return Math.floor(Math.random() * ((max+1) - min) + min);
-                }
-
-                function getRandomColor(){
-                    return `rgb(${getRandomInt(255,0)},${getRandomInt(255,0)},${getRandomInt(255,0)})`
-                }
-                function isRed(target){
-                    return target.style.backgroundColor == "red";
-                }
+                }       
             });
+
+            const getRandomInt = (max, min) => 
+                    Math.floor(Math.random() * ((max+1) - min) + min);
+                
+            const getRandomColor = () =>
+                `rgb(${getRandomInt(255,0)},${getRandomInt(255,0)},${getRandomInt(255,0)})`
+
+            const isRed = (target) => 
+                target.style.backgroundColor == "red";
         </script>
     </body>
 </html>

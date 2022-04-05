@@ -10,7 +10,7 @@
             const word = "kayAk";
             const word2 = "kayyaK";
 
-            function palindrome(word){
+            const palindrome = (word) => {
                 const lowerCase = word.toLowerCase();
                 const length = word.length;
                 if(length % 2 == 0){
@@ -19,9 +19,7 @@
                 return lowerCase.slice(0,(length-1)/2) === revert(lowerCase.slice((length+1)/2));
             }
 
-            function revert(str){
-                return str.split('').reverse().join('');
-            }
+            const revert = (str) => str.split('').reverse().join('');
             
             document.body.innerHTML += `Word: ${word} </br>Palindrome: ${palindrome(word)}`
             document.body.innerHTML += `</br></br>Word: ${word2} </br>Palindrome: ${palindrome(word2)}`

@@ -21,15 +21,12 @@
                     );
                     document.body.appendChild(elemDiv);
                 }
-
-                function getRandomInt(max, min) {
-                    return Math.floor(Math.random() * ((max+1) - min) + min);
-                }
-
-                function getRandomColor(){
-                    return `rgb(${getRandomInt(255,0)},${getRandomInt(255,0)},${getRandomInt(255,0)})`
-                }
             });
+            const getRandomInt = (max, min) => 
+                    Math.floor(Math.random() * ((max+1) - min) + min);
+                
+            const getRandomColor = () =>
+                `rgb(${getRandomInt(255,0)},${getRandomInt(255,0)},${getRandomInt(255,0)})`
         </script>
     </body>
 </html>

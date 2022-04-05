@@ -9,13 +9,9 @@
         <script>
             const string = "hello i'm robert";
 
-            function capitalize(str){
-                return str.split(' ').map(word=>ucFirst(word)).join(' ');
-            }
-
-            function ucFirst(word){
-                return word.slice(0,1).toUpperCase() + word.slice(1);
-            }
+            const capitalize = (str) => str.split(' ').map(word=>ucFirst(word)).join(' ');
+        
+            const ucFirst = (word) => (word.slice(0,1).toUpperCase() + word.slice(1));
             
             document.body.innerHTML = `String: ${string} </br>Capitalize: ${capitalize(string)}`
         </script>

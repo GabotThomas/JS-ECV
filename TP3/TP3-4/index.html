@@ -7,7 +7,6 @@
     </head>
     <body>
         <ul>
-
         </ul>
         <script>
             window.addEventListener("DOMContentLoaded", (event) => {
@@ -18,10 +17,7 @@
                     if(arrayLi.length > 20){
                         arrayLi.shift();
                     }
-                    ul.innerHTML = arrayLi.map(li=>{
-                       return  `<li>${li}</li>`
-                    }).join('') 
-
+                    ul.innerHTML = arrayLi.map(li => `<li>${li}</li>`).join('') 
                 })
             });
         </script>

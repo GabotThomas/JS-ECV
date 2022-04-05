@@ -8,9 +8,8 @@
     <body>
         <script>
             const word = "hello";
-            function ucFirst(word){
-                return word.slice(0,1).toUpperCase() + word.slice(1);
-            }
+            const ucFirst = (word) => (word.slice(0,1).toUpperCase() + word.slice(1));
+            
             document.body.innerHTML = `Word: ${word} </br>Uppercase: ${ucFirst(word)}`
         </script>
     </body>

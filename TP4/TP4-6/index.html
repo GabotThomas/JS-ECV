@@ -9,8 +9,8 @@
         <script>
             const string = "Le chemin le plus cours n'est pas toujours le meilleur";
 
-            function findLongestWord(string){
-                const words = string.split(' ');
+            const findLongestWord = (str) => {
+                const words = str.split(' ');
                 let longestWord = words[0];
                 for(let i = 1;i<words.length;i++){
                     if(words[i].length > longestWord.length){
@@ -18,10 +18,6 @@
                     }
                 }
                 return longestWord;
-            }
-
-            function revert(str){
-                return str.split('').reverse().join('');
             }
             
             document.body.innerHTML += `String: ${string} </br>FindLongestWord: ${findLongestWord(string)}`

@@ -8,9 +8,8 @@
     <body>
         <script>
             const string = "Hello I'm Robert !";
-            function revert(str){
-                return str.split('').reverse().join('');
-            }
+            const revert = (str) => str.split('').reverse().join('');
+            
             document.body.innerHTML = `String: ${string} </br>Revert: ${revert(string)}`
         </script>
     </body>
