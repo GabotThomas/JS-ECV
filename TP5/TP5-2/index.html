@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP5 JS</title>
+    </head>
+    <body>
+        <script>
+            const tab = [0,2,4,6,8,8,2,6,4,4,8,"2","string","string"];
+
+            const removeDuplicate = (array) =>
+                array.reduce((results,element)=>{
+                    //Use "some" for not strict equality / or use "includes" if you want strict equality
+                    if(!results.some(result => result == element)){
+                        results.push(element);
+                    }
+                    return results;
+                },[]);
+            
+            console.log(removeDuplicate(tab))
+            document.body.innerHTML += `Array: [${tab.join()}] </br>removeDuplicate: [${removeDuplicate(tab).join()}]`
+        </script>
+    </body>
+</html>
