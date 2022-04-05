@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP5 JS</title>
+    </head>
+    <body>
+        <script>
+            const string = "How the avocado became the fruit of the global trade";
+            const string2 = "Why you will probably pay more for your christmas tree this year";
+            const string3 = "hey parents, surprise fruit juice is not fruit";
+            const string4 = "visualizing science";
+
+            const getHashTags = (string) => {
+                const words = string.split(/[.,;!?:\s]/);
+                const result = [];
+                for(let j = 0; j<3;j++){
+                    let index = 0;
+                    words.forEach((word,i) => {
+                        if(word.length > words[index].length){
+                            index = i;
+                        }
+                    });
+                    result.push('#'+words[index])
+                    words.splice(index,1)
+                    if(!words.length) return result;
+                }
+                return result;
+            }
+
+            console.log(getHashTags(string));
+            console.log(getHashTags(string2));
+            console.log(getHashTags(string3));
+            console.log(getHashTags(string4));
+            document.body.innerHTML += `String: ${string} </br>getHashTags: (${getHashTags(string).join(' / ')})`
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP5 JS</title>
+    </head>
+    <body>
+        <script>            
+            const combinations = (...listNumber) => 
+                listNumber.length ?
+                    listNumber.reduce((result,number)=>{
+                        return (result * number)
+                    }, 1)
+                    : 0;
+            
+            console.log(combinations(2,3))
+            console.log(combinations(3,7,4))
+            console.log(combinations(2,3,4,5))
+            console.log(combinations())
+            document.body.innerHTML += `Numbers: 2,3 </br>
+            Combinations: ${combinations(2,3)}`
+        </script>
+    </body>
+</html>

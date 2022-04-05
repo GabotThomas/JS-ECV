@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP5 JS</title>
+    </head>
+    <body>
+        <script>
+            const first = [0,2,4,6,8,8,2,6,4,4,8,"6","string","string","diff"];
+            const second = [1,2,3,4,5,6,7,"6","string"];
+            
+            const InversedIntersection = (array1,array2) =>
+                array1.reduce((results,element)=>{
+                    if(!results.some(result => result == element) 
+                        && !array2.some(el2 => el2 == element)
+                    ){
+                        results.push(element);
+                    }
+                    return results;
+                },[]);
+
+            const arrayDiff = (array1,array2) => InversedIntersection(array1,array2)
+                .concat(InversedIntersection(array2,array1))
+            
+            
+            console.log(arrayDiff(first,second))
+            document.body.innerHTML += `First array: [${first.join()}] </br>
+            Second array: [${second.join()}] </br>
+            ArrayDiff: [${arrayDiff(first,second).join()}]`
+        </script>
+    </body>
+</html>
