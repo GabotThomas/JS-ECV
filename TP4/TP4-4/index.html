@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP4 JS</title>
+    </head>
+    <body>
+        <script>
+            const string = "sentence in pascalCase";
+
+            function pascalCase(str){
+                return str.split(' ').map(word=>ucFirst(word)).join('');
+            }
+
+            function ucFirst(word){
+                return word.slice(0,1).toUpperCase() + word.slice(1);
+            }
+            
+            document.body.innerHTML = `String: ${string} </br>PascalCase: ${pascalCase(string)}`
+        </script>
+    </body>
+</html>
