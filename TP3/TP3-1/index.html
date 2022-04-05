@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+        <title>TP3 JS</title>
+        <style>
+            div{
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="width:100px;height:100px;background-color:black;"></div>
+        <div style="width:100px;height:100px;background-color:black;"></div>
+        <div style="width:100px;height:100px;background-color:black;"></div>
+        <script>
+            window.addEventListener("DOMContentLoaded", (event) => {
+                Array.from(document.getElementsByTagName("div")).forEach(div=>{
+                    div.addEventListener("click",(event)=>{
+                        const target = event.target;
+                        target.style.backgroundColor = isBlack(target) ? "red":"black";
+                        
+                    })
+                })
+                function isBlack(target){
+                    return target.style.backgroundColor == "black";
+                }
+            });
+        </script>
+    </body>
+</html>
