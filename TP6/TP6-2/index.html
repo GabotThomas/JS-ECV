@@ -9,7 +9,8 @@
         <script>
             const object = {
                 a:[{x:2},{y:4}],
-                b:1
+                b:1,
+                c:"test"
             };
 
             const other = {
@@ -33,14 +34,14 @@
             }
 
             const associateAttributes = (attrParents,attrGiven) =>{
-                if(attrParents.length && attrGiven.length){
-                    return attrParents.concat(attrGiven);
-                }
-                if(attrParents.length){
+                if(Array.isArray(attrParents)){
+                    if(Array.isArray(attrGiven)){
+                        return attrParents.concat(attrGiven);
+                    }
                     attrParents.push(attrGiven);
                     return attrParents;
                 }
-                return [attrParents].concat(attrGiven);
+                return [attrParents].concat(Array.isArray(attrGiven) ? attrGiven : [attrGiven]);
             }
 
             console.log(merge(object,other));

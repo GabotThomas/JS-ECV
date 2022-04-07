@@ -18,9 +18,9 @@
                 return(word.concat(["X","X","X"]).join('').slice(0,3));
             }
 
-            const extractFirstPart = (array) => {
-                const consonants = array.filter(
-                    consonant => !vowels.some(vowel => vowel == consonant)
+            const extractFirstPart = (letters) => {
+                const consonants = letters.filter(
+                    letter => !vowels.some(vowel => vowel == letter)
                 );
 
                 if(consonants.length >= 3){
@@ -29,16 +29,16 @@
                 
                 return insufficientConsonants(
                     consonants.concat(
-                        array.filter(
-                            consonant => vowels.some(vowel => vowel == consonant)
+                        letters.filter(
+                            letter => vowels.some(vowel => vowel == letter)
                         )
                     )
                 );
             }
             
-            const extractSecondPart = (array) => {
-                const consonants = array.filter(
-                    consonant => !vowels.some(vowel => vowel == consonant)
+            const extractSecondPart = (letters) => {
+                const consonants = letters.filter(
+                    letter => !vowels.some(vowel => vowel == letter)
                 );
                 if(consonants.length === 3){
                     return consonants.join("");
@@ -50,8 +50,8 @@
 
                 return insufficientConsonants(
                     consonants.concat(
-                        array.filter(
-                            consonant => vowels.some(vowel => vowel == consonant)
+                        letters.filter(
+                            letter => vowels.some(vowel => vowel == letter)
                         )
                     )
                 );
