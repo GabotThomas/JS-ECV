@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP6 JS</title>
+    </head>
+    <body>
+        <script>
+            const ifExist = (object,arrayKey) => {
+                if(object[arrayKey[0]]){
+                    if(arrayKey.length != 1){
+                        return ifExist(object[arrayKey[0]],arrayKey.slice(1));
+                    }
+                    return object[arrayKey[0]];
+                }
+                return null;
+            }
+
+            const prop_access = (object,path) => {
+                if(!path){
+                    return object;
+                }
+
+                const result = ifExist(object,path.split('.'));
+                if(result){
+                    return result;
+                }
+
+                return path + ' not exist';
+            }
+
+            console.log(prop_access({
+                "animal":{
+                    "type":{
+                        "name": "dog"
+                    }
+                }
+            }, 
+            "animal.type.name")); // dog
+
+            console.log(prop_access({
+                "animal":
+                {
+                    "type":{
+                        "name": "dog"
+                    }
+                }
+            }, "animal.type"
+            )); // { name: "dog" }
+
+            console.log(prop_access({
+                "animals":[
+                {
+                    "type":{
+                        "name": "dog"
+                    }
+                },
+                {
+                    "type":{
+                        "name": "cat"
+                    }
+                }
+            ]
+            }, "animals.1.type"
+            )); // { name: "cat" }
+            
+        </script>
+    </body>
+</html>

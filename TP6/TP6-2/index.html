@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP6 JS</title>
+    </head>
+    <body>
+        <script>
+            const object = {
+                a:[{x:2},{y:4}],
+                b:1
+            };
+
+            const other = {
+                a:{z:3},
+                b:[2,3],
+                c:'foo'
+            }
+
+            const merge = (object,other) => {
+                for(const key in object){
+                    if(other[key]){
+                        object[key] = associateAttributes(object[key],other[key]);
+                    }
+                }
+                for(const key in other){
+                    if(!object[key]){
+                        object[key] = other[key];
+                    }
+                }
+                return object;
+            }
+
+            const associateAttributes = (attrParents,attrGiven) =>{
+                if(attrParents.length && attrGiven.length){
+                    return attrParents.concat(attrGiven);
+                }
+                if(attrParents.length){
+                    attrParents.push(attrGiven);
+                    return attrParents;
+                }
+                return [attrParents].concat(attrGiven);
+            }
+
+            console.log(merge(object,other));
+            
+        </script>
+    </body>
+</html>
