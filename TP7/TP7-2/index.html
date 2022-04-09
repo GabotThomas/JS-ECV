@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP7 JS</title>
+    </head>
+    <body>
+        <script>
+            const diffBetweenTwoInt = (first,second) => 
+                new Promise((success,failure)=>{
+                    if(first > second){
+                        success(first - second)
+                    }else{
+                        failure('Echec');
+                        
+                    }
+                });        
+
+            function successCallback(result){
+                console.log(result)
+            }
+
+            function failureCallback(error){
+                console.error("Pas de différence " + error)
+            }
+
+            const promise = diffBetweenTwoInt(50,20);
+            promise.then(successCallback,failureCallback);
+            
+        </script>
+    </body>
+</html>

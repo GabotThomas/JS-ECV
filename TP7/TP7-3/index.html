@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP7 JS</title>
+    </head>
+    <body>
+        <script>
+            const minor = (date) => 
+                new Promise((success,failure)=>{
+                    const today = Date.now();
+                    const [day,month,year] = date.split("/");
+                    const birth = new Date(year,month-1,day).getTime();
+                    const diff = ((today - birth) / (1000 * 3600 * 24 * 365.25));
+                    if(diff >= 18){
+                        success(true);
+                    }else{
+                        failure('Mineure');
+                    }
+                });        
+
+            function successCallback(result){
+                console.log(result)
+            }
+
+            function failureCallback(error){
+                console.error(error)
+            }
+
+            const promise = minor('09/04/2004');
+            promise.then(successCallback,failureCallback);
+            
+        </script>
+    </body>
+</html>

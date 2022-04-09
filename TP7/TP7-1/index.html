@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP7 JS</title>
+    </head>
+    <body>
+        <script>
+            const under20character = (string) => 
+                new Promise((success,failure)=>{
+                    if(string.length > 20){
+                        failure('Echec');
+                    }else{
+                        success(true)
+                    }
+                });        
+
+            function successCallback(result){
+                console.log("Moins de 20 caractères " + result)
+            }
+
+            function failureCallback(error){
+                console.error("Plus de 20 caractères " + error)
+            }
+
+            const promise = under20character('1234567891234567891');
+            promise.then(successCallback,failureCallback);
+            
+        </script>
+    </body>
+</html>
