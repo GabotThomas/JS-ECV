@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP7 JS</title>
+        <style>
+            .loader {
+                border: 5px solid #f3f3f3; /* Light grey */
+                border-top: 5px solid #828282; /* Blue */
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
+
+            .container > div{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .container{
+                padding: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="list" style="display: flex;">
+            <div class="container">
+                <h1>Liste Personnages</h1>
+                <div class="character"></div>
+            </div>
+            <div class="container">
+                <h1>Liste Vaisseaux</h1>
+                <div class="ship"></div>
+            </div>
+            <div class="container">
+                <h1>Liste Planètes</h1>
+                <div class="planet"></div>
+            </div>
+        </div>
+        
+        <script>
+            const JSON_TYPE = 'application/json';
+            
+            const useFetch = async (url) => {
+                const params = { 
+                    method: 'GET', 
+                    headers: {
+                        'Content-Type': JSON_TYPE,
+                    } 
+                };
+                try{
+                    const response = await fetching(url, params);
+                    return response;
+                }
+                catch(e){
+                    console.error(e)
+                }
+            }
+            
+            const fetching = async (url, params) => {
+                try {
+                    const response = await fetch(url, params);
+                    if (response.ok){
+                        if (response.headers.get('Content-Type') === JSON_TYPE) {
+                            const responseJson = await response.json();
+                            return responseJson;
+                        }
+                    }
+                }
+                catch(e){
+                    console.error(e);
+                }
+            }
+
+            const loader = () =>{
+                return '<div class="loader"></div>';
+            }
+
+            const character = () =>{
+                let characters = [];
+                let next = true;
+                const div = document.querySelector('.character');
+
+                const execute = (url) =>{
+                    useFetch(url).then((data)=>{
+                        characters = characters.concat(data.results)
+                        if(data.next){
+                            execute(data.next);
+                        }
+                        else{
+                            next = false;
+                            indexRender();
+                        }
+                    })
+                }
+
+                execute('https://swapi.dev/api/people');
+                
+                const indexRender = () => {
+                    if(next === true){
+                        return div.innerHTML = loader();
+                    }
+
+                    return div.innerHTML = 
+                    `<ul>
+                        ${characters.map(character => {
+                            return  `<li>${character.name}</li>`
+                        }).join('')}
+                    </ul>`;
+                }
+
+                indexRender();
+            }
+
+            const starship = () =>{
+                let starships = [];
+                let next = true;
+                const div = document.querySelector('.ship');
+
+                const execute = (url) =>{
+                    useFetch(url).then((data)=>{
+                        starships = starships.concat(data.results)
+                        if(data.next){
+                            execute(data.next);
+                        }
+                        else{
+                            next = false;
+                            indexRender();
+                        }
+                    })
+                }
+
+                execute('https://swapi.dev/api/starships');
+                
+                const indexRender = () => {
+                    if(next === true){
+                        return div.innerHTML = loader();
+                    }
+
+                    return div.innerHTML = 
+                    `<ul>
+                        ${starships.map(starship => {
+                            return  `<li>${starship.name}</li>`
+                        }).join('')}
+                    </ul>`;
+                }
+
+                indexRender();
+            }
+
+            const planet = () =>{
+                let planets = [];
+                let next = true;
+                const div = document.querySelector('.planet');
+
+                const execute = (url) =>{
+                    useFetch(url).then((data)=>{
+                        planets = planets.concat(data.results)
+                        if(data.next){
+                            execute(data.next);
+                        }
+                        else{
+                            next = false;
+                            indexRender();
+                        }
+                    })
+                }
+
+                execute('https://swapi.dev/api/planets');
+                
+                const indexRender = () => {
+                    if(next === true){
+                        return div.innerHTML = loader();
+                    }
+
+                    return div.innerHTML = 
+                    `<ul>
+                        ${planets.map(planet => {
+                            return  `<li>${planet.name}</li>`
+                        }).join('')}
+                    </ul>`;
+                }
+
+                indexRender();
+            }
+
+            character();
+            starship();
+            planet();
+            
+        </script>
+    </body>
+</html>

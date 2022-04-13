@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TP7 JS</title>
+    </head>
+    <body>
+        <script>
+
+            function execute(promise){
+                promise()
+                .then(result => console.log(result))
+                .catch(error => console.error(error))
+            }
+
+            const under20character = (string) => 
+                new Promise((resolve,failure)=>{
+                    if(string.length > 20){
+                        failure('Plus de 20 caractères')
+                    }else{
+                        resolve(true);
+                    }
+
+                });
+            
+
+            const diffBetweenTwoInt = (first,second) => 
+                new Promise((success,failure)=>{
+                    if(first > second){
+                        success(first - second)
+                    }else{
+                        failure('Echec');
+                        
+                    }
+                });     
+
+            const minor = (date) => 
+                new Promise((success,failure)=>{
+                    const today = Date.now();
+                    const [day,month,year] = date.split("/");
+                    const birth = new Date(year,month-1,day).getTime();
+                    const diff = ((today - birth) / (1000 * 3600 * 24 * 365.25));
+                    if(diff >= 18){
+                        success(true);
+                    }else{
+                        failure('Mineure');
+                    }
+                });  
+
+            execute(() => under20character("test"));
+            execute(() => under20character("fhikozkkfcjcjdlldihvbnkjk"));
+
+            execute(() => diffBetweenTwoInt(50,45));
+            execute(() => diffBetweenTwoInt(50,56));
+
+            execute(() => minor("10/12/2003"));
+            execute(() => minor("10/12/2008"));
+
+        </script>
+    </body>
+</html>
